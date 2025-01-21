@@ -7,19 +7,15 @@ class Solution {
        {
           
                  map.put(i, map.getOrDefault(i,0)+1);
-           
-         
-          
-
        }
        
 
     PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparingInt(key-> map.get(key)));
 
-     for (Map.Entry<Integer, Integer> entry : map.entrySet())
+     for (int key: map.keySet())
       {
          
-            pq.offer(entry.getKey());
+            pq.offer(key);
             if (pq.size() > k) 
             { 
                 pq.poll();
