@@ -15,12 +15,7 @@
  */
 class Solution {
     public int pathSum(TreeNode root, int targetSum) {
-
-         if(root==null){return 0;}
-
-
-         return preorder(root,targetSum,new ArrayList<>());
-        
+         return preorder(root,targetSum,new ArrayList<>());  
     }  
 
 
@@ -31,11 +26,13 @@ class Solution {
         
         if(root==null){return 0;}
 
+        long sum=0;
+        int count=0;
+
         
         result.add((long)root.val);
         
-         long sum=0;
-         int count=0;
+         
 
          for(int i=result.size()-1; i>=0;i--)
          {
@@ -48,12 +45,11 @@ class Solution {
          }
 
     
-          count= count+ preorder(root.left,target, new ArrayList<>(result));
-                
-          count = count + preorder(root.right,target, new ArrayList<>(result));           
+          count= count+ preorder(root.left,target, result);        
+          count = count + preorder(root.right,target, result);           
          
 
-       // result.remove(result.size()-1);
+       result.remove(result.size()-1);
      
         return count;       
          
