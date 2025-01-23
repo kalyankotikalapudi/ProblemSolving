@@ -47,19 +47,13 @@ class Solution {
                 }         
          }
 
-         
-         
-        
-
-       
-          count= count+ preorder(root.left,target, result);
-                  
-
-       
-          count = count + preorder(root.right,target, result);           
+    
+          count= count+ preorder(root.left,target, new ArrayList<>(result));
+                
+          count = count + preorder(root.right,target, new ArrayList<>(result));           
          
 
-        result.remove(result.size()-1);
+       // result.remove(result.size()-1);
      
         return count;       
          
