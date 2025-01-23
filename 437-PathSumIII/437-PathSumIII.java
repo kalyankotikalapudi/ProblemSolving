@@ -49,17 +49,15 @@ class Solution {
 
          
          
-         System.out.println(result);
+        
 
-        if(root.left!=null)
-        {
+       
           count= count+ preorder(root.left,target, result);
-        }           
+                  
 
-        if(root.right!=null)
-        {
+       
           count = count + preorder(root.right,target, result);           
-        } 
+         
 
         result.remove(result.size()-1);
      
