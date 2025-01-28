@@ -3,20 +3,20 @@ class Solution {
         Set<Character> set = new HashSet<>();
         int start = 0, maxLength = 0, count=0;
 
-        for (int end = 0; end < s.length(); end++) {
+        for (int i = 0; i < s.length(); i++) {
            
-            while (set.contains(s.charAt(end))) {
+            while (set.contains(s.charAt(i))) {
                 set.remove(s.charAt(start)); 
                 start++; 
                 count--;
             }
 
            
-            set.add(s.charAt(end));
+            set.add(s.charAt(i));
             count++;
 
          
-            maxLength = Math.max(maxLength, count);
+            maxLength = Math.max(maxLength, i-start+1);
         }
 
         return maxLength;
