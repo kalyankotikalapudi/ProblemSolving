@@ -1,32 +1,53 @@
+// Last updated: 4/5/2025, 10:57:40 PM
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         
-        Set<Integer> visited = new HashSet<>();
+        Set<Integer> visit = new HashSet<>();
         
+        
+           dfs(rooms, 0 ,visit);
 
-        helper(rooms,0,visited);
-       
-       return visited.size() == rooms.size();
+           if(rooms.size()==visit.size())
+           {
+            return true;
+           }
+
+         return false;
     }
 
 
-    private void helper(List<List<Integer>> rooms, int key , Set<Integer> visited)
+    private void dfs(List<List<Integer>> result, int node, Set<Integer> visit)
     {
-       if(!visited.contains(key))
-       {
-          visited.add(key);
-       }
+           
 
-       for(int i : rooms.get(key))
-       {
-             if(!visited.contains(i))
-             {
-                   helper(rooms,i,visited);
-            }
-       }
+           Stack<Integer> stack = new Stack<>();
+           stack.push(node);
+
+           while(!stack.isEmpty())
+           {
+
+            int x = stack.pop();
+            if(!visit.contains(node))
+           {
+             visit.add(node);
+           }
+
+            for(int neighbour: result.get(x))
+              {
+
+                if(!visit.contains(neighbour))
+               {
+                    stack.push(neighbour);
+                    visit.add(neighbour);
+               }
+                 
+           }
+
+
+
+           }
+         
+
     }
-
-
-
     
 }
